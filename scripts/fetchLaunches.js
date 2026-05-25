@@ -41,24 +41,19 @@ async function loadExistingLaunches() {
   }
 }
 
-function latestDate(launches) {
-  return launches.map((launch) => launch.date).sort().at(-1);
-}
-
 async function main() {
   await mkdir("data", { recursive: true });
 
   const fullRefetch = process.argv.includes("--full-refetch")
     || process.env.npm_config_full_refetch !== undefined;
 
-  let existingLaunches = [];
+  let loaded = null;
   let afterDate = null;
 
   if (!fullRefetch) {
-    const loaded = await loadExistingLaunches();
-    if (loaded?.length > 0) {
-      existingLaunches = loaded;
-      afterDate = latestDate(existingLaunches);
+    loaded = await loadExistingLaunches();
+    if (loaded?.mostRecentLaunchDate) {
+      afterDate = loaded.mostRecentLaunchDate;
       console.log(`Incremental fetch: pulling launches after ${afterDate}`);
     } else {
       console.log("No existing data — performing full fetch...");
@@ -89,12 +84,19 @@ async function main() {
     newLaunches.push(...page.results.map(shapeLaunch));
   }
 
-  const allLaunches = fullRefetch
-    ? newLaunches
-    : [...existingLaunches, ...newLaunches];
-
-  await writeFile(OUTPUT_FILE, JSON.stringify(allLaunches, null, 2));
-  console.log(`Saved ${allLaunches.length} total launches (${newLaunches.length} new) to ${OUTPUT_FILE}`);
+  const dayMap = fullRefetch ? {} : (loaded ?? {});
+  for (const launch of newLaunches) {
+    const date = new Date(launch.date);
+    const key = `${String(date.getUTCMonth() + 1).padStart(2, '0')}-${String(date.getUTCDate()).padStart(2, '0')}`;
+    if (!dayMap[key]) dayMap[key] = [];
+    dayMap[key].push(launch);
+  }
+  dayMap.mostRecentLaunchDate = newLaunches.map((launch) => launch.date).sort().at(-1);
+  await writeFile(OUTPUT_FILE, JSON.stringify(dayMap, null, 2));
+  const total_count = Object.values(dayMap).reduce(
+    (sum, value) => (Array.isArray(value) ? sum + value.length : sum), 0
+  );
+  console.log(`Saved ${total_count} total launches (${newLaunches.length} new) to ${OUTPUT_FILE}`);
 }
 
 main().catch((error) => {
