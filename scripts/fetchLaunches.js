@@ -18,7 +18,7 @@ function shapeLaunch(launch) {
   };
 }
 
-async function fetchPage(offset, afterDate) {
+async function fetchPage(offset, afterDate, beforeDate) {
   const url = new URL(BASE_URL);
   url.searchParams.set("search", "SpaceX");
   url.searchParams.set("limit", PAGE_SIZE);
@@ -26,6 +26,9 @@ async function fetchPage(offset, afterDate) {
   url.searchParams.set("ordering", "net");
   if (afterDate) {
     url.searchParams.set("net__gt", afterDate);
+  }
+  if (beforeDate) {
+    url.searchParams.set("net__lte", beforeDate);
   }
 
   const response = await fetch(url);
@@ -68,7 +71,9 @@ async function main() {
     console.log("Full refetch requested...");
   }
 
-  const firstPage = await fetchPage(0, afterDate);
+  const beforeDate = new Date().toISOString();
+
+  const firstPage = await fetchPage(0, afterDate, beforeDate);
   const total = firstPage.count;
 
   if (total === 0) {
@@ -83,7 +88,7 @@ async function main() {
 
   for (let offset = PAGE_SIZE; offset < total; offset += PAGE_SIZE) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    const page = await fetchPage(offset, afterDate);
+    const page = await fetchPage(offset, afterDate, beforeDate);
     console.log(`  offset=${offset}: fetched ${page.results.length}`);
     newLaunches.push(...page.results.map(shapeLaunch));
   }
