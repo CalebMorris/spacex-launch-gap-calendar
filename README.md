@@ -27,3 +27,7 @@ On subsequent runs it performs an **incremental fetch** — only pulling launche
 ```
 npm run fetch-launches -- --full-refetch
 ```
+
+## Development
+
+See [docs/development.md](docs/development.md) for architecture details, data pipeline notes, and keyboard nav reference.
