@@ -35,17 +35,14 @@ The script is rate-limit-aware: unauthenticated requests are capped at **15/hour
 
 ```json
 {
-  "id": "uuid",
-  "name": "Falcon 9 | Starlink ...",
-  "date": "2024-03-04T06:05:00Z",   // ISO 8601, used as sort key
-  "status": "Success",               // "Success" | "Failure" | "Partial Failure" | "Go" | "TBD" | null
-  "rocket": "Falcon 9",
-  "mission": "Starlink Group 6-40",
-  "missionDescription": "...",
-  "launchSite": "SLC-40, CCSFS",
-  "launchSiteLocation": "Cape Canaveral, FL, USA"
+  "name": "Falcon 9 Block 5 | Starlink Group 6-40",
+  "date": "2024-03-04T06:05:00Z",
+  "status": "Success",
+  "mission": "Starlink Group 6-40"
 }
 ```
+
+`status` values from the API: `"Success"` | `"Failure"` | `"Partial Failure"` | `"Go"` | `"TBD"` | `null`
 
 ## Calendar logic
 
