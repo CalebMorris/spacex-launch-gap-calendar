@@ -4,6 +4,10 @@ A simple aggregated view of all SpaceX launches on a calendar. Shows days that h
 
 Launch data is sourced from the [Launch Library 2 API](https://ll.thespacedevs.com/docs) (v2.3.0) and covers all SpaceX vehicles — Falcon 1, Falcon 9, Falcon Heavy, and Starship.
 
+## Data Source
+
+Launch data is provided by the [Launch Library 2 API](https://ll.thespacedevs.com/) at `https://ll.thespacedevs.com/`. This is a free, community-maintained API operated by The Space Devs.
+
 ## Setup
 
 ```
