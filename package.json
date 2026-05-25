@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "fetch-launches": "node scripts/fetchLaunches.js",
+    "fetch-launches:full": "node scripts/fetchLaunches.js --full-refetch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

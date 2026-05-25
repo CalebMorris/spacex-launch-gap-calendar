@@ -6,15 +6,10 @@ const OUTPUT_FILE = "data/launches.json";
 
 function shapeLaunch(launch) {
   return {
-    id: launch.id,
     name: launch.name,
     date: launch.net,
     status: launch.status?.abbrev ?? null,
-    rocket: launch.rocket?.configuration?.name ?? null,
     mission: launch.mission?.name ?? null,
-    missionDescription: launch.mission?.description ?? null,
-    launchSite: launch.pad?.name ?? null,
-    launchSiteLocation: launch.pad?.location?.name ?? null,
   };
 }
 
@@ -53,7 +48,8 @@ function latestDate(launches) {
 async function main() {
   await mkdir("data", { recursive: true });
 
-  const fullRefetch = process.argv.includes("--full-refetch");
+  const fullRefetch = process.argv.includes("--full-refetch")
+    || process.env.npm_config_full_refetch !== undefined;
 
   let existingLaunches = [];
   let afterDate = null;
