@@ -4,7 +4,7 @@ import { generate as generateOgImage } from "./generateOgImage.js";
 
 const BASE_URL = "https://ll.thespacedevs.com/2.3.0/launches/";
 const PAGE_SIZE = 100;
-const OUTPUT_FILE = "data/launches.json";
+const OUTPUT_FILE = "site/data/launches.json";
 
 export function shapeLaunch(launch) {
   return {
@@ -56,7 +56,7 @@ export async function loadExistingLaunches(filePath = OUTPUT_FILE) {
 }
 
 async function main() {
-  await mkdir("data", { recursive: true });
+  await mkdir("site/data", { recursive: true });
 
   const fullRefetch = process.argv.includes("--full-refetch")
     || process.env.npm_config_full_refetch !== undefined;

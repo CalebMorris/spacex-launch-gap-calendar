@@ -36,5 +36,5 @@ jobs:
           branch: data/weekly-launch-update
           delete-branch: true
           title: '[data] Weekly launch data update'
-          body: 'Automated weekly update of `data/launches.json` and `og-image.svg` via the Launch Library 2 API.'
+          body: 'Automated weekly update of `site/data/launches.json` and `site/og-image.svg` via the Launch Library 2 API.'
           labels: data

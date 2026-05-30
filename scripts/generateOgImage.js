@@ -124,7 +124,7 @@ function renderMonth(monthIndex, cx, cy, dayCounts) {
 // ── Main export ────────────────────────────────────────────────────────────
 export function generate() {
   const data = JSON.parse(
-    readFileSync(resolve(__dirname, '../data/launches.json'), 'utf-8')
+    readFileSync(resolve(__dirname, '../site/data/launches.json'), 'utf-8')
   );
 
   const { byDay: dayMap } = data;
@@ -208,7 +208,7 @@ export function generate() {
     fill="${TEXT_DIM}">Every mission. Every day. Interactive.</text>
 </svg>`;
 
-  writeFileSync(resolve(__dirname, '../og-image.svg'), svg);
+  writeFileSync(resolve(__dirname, '../site/og-image.svg'), svg);
   console.log(`Generated og-image.svg — ${totalLaunches} launches · ${uniqueDays} unique days · ${yearRange}`);
 }
 

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const FAVICONS_DIR = path.resolve(ROOT, 'favicons');
+const FAVICONS_DIR = path.resolve(ROOT, 'site/favicons');
 const SVG_PATH = path.resolve(FAVICONS_DIR, 'favicon.svg');
 const svgContent = fs.readFileSync(SVG_PATH, 'utf8');
 

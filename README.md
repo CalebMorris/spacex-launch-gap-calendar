@@ -18,9 +18,9 @@ npm install
 
 ### `npm run fetch-launches`
 
-Fetches SpaceX launch data from the Launch Library 2 API and saves it to `data/launches.json`.
+Fetches SpaceX launch data from the Launch Library 2 API and saves it to `site/data/launches.json`.
 
-On subsequent runs it performs an **incremental fetch** — only pulling launches newer than the most recent date already in `data/launches.json`. This keeps API requests minimal and respects the unauthenticated rate limit of 15 requests/hour.
+On subsequent runs it performs an **incremental fetch** — only pulling launches newer than the most recent date already in `site/data/launches.json`. This keeps API requests minimal and respects the unauthenticated rate limit of 15 requests/hour.
 
 **Options**
 

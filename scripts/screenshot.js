@@ -4,8 +4,9 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 
 const PORT = 8787;
-const ROOT = path.resolve(import.meta.dirname, '..');
-const OUTPUT_DIR = path.resolve(ROOT, 'screenshots');
+const PROJECT_ROOT = path.resolve(import.meta.dirname, '..');
+const SITE_DIR = path.resolve(PROJECT_ROOT, 'site');
+const OUTPUT_DIR = path.resolve(PROJECT_ROOT, 'screenshots');
 const OUTPUT_DESKTOP = path.resolve(OUTPUT_DIR, 'screenshot.png');
 const OUTPUT_MOBILE = path.resolve(OUTPUT_DIR, 'screenshot-mobile.png');
 
@@ -23,7 +24,7 @@ function startServer() {
   return new Promise((resolve) => {
     const server = http.createServer((request, response) => {
       const urlPath = request.url === '/' ? '/index.html' : request.url;
-      const filePath = path.join(ROOT, urlPath);
+      const filePath = path.join(SITE_DIR, urlPath);
       const extension = path.extname(filePath);
       const contentType = MIME_TYPES[extension] ?? 'application/octet-stream';
 

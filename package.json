@@ -11,7 +11,7 @@
     "generate-favicons": "node scripts/generateFavicons.js",
     "install-hooks": "[ -d .git/hooks ] && cp scripts/hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push && echo 'Git hooks installed.' || echo 'Skipping git hooks (no .git/hooks directory).'",
     "prepare": "npm run install-hooks",
-    "dev": "npx serve .",
+    "dev": "npx serve site",
     "test": "node --test scripts/fetchLaunches.test.js"
   },
   "devDependencies": {
