@@ -860,10 +860,10 @@
       if (!nav_keys.has(event.key)) return;
 
       const active = document.activeElement;
-      if (!active || !active.classList.contains('day-cell') || !('month' in active.dataset)) return;
+      const no_day_focused = !active || !active.classList.contains('day-cell') || !('month' in active.dataset);
 
-      const current_month = parseInt(active.dataset.month, 10);
-      const current_day = parseInt(active.dataset.day, 10);
+      const current_month = no_day_focused ? 0 : parseInt(active.dataset.month, 10);
+      const current_day = no_day_focused ? 1 : parseInt(active.dataset.day, 10);
       let target_month = current_month;
       let target_day = current_day;
 
