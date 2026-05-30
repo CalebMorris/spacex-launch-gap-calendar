@@ -6,7 +6,11 @@
   "scripts": {
     "fetch-launches": "node scripts/fetchLaunches.js",
     "fetch-launches:full": "node scripts/fetchLaunches.js --full-refetch",
+    "screenshot": "node scripts/screenshot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
   },
   "keywords": [],
   "author": "",
