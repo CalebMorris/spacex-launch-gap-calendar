@@ -6,9 +6,8 @@ import { chromium } from 'playwright';
 const PORT = 8787;
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUTPUT_DIR = path.resolve(ROOT, 'screenshots');
-const DATE = new Date().toISOString().slice(0, 10);
-const OUTPUT_DESKTOP = path.resolve(OUTPUT_DIR, `screenshot-${DATE}.png`);
-const OUTPUT_MOBILE = path.resolve(OUTPUT_DIR, `screenshot-${DATE}-mobile.png`);
+const OUTPUT_DESKTOP = path.resolve(OUTPUT_DIR, 'screenshot.png');
+const OUTPUT_MOBILE = path.resolve(OUTPUT_DIR, 'screenshot-mobile.png');
 
 const MIME_TYPES = {
   '.html': 'text/html',
