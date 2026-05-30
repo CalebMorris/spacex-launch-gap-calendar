@@ -6,13 +6,15 @@
   "scripts": {
     "fetch-launches": "node scripts/fetchLaunches.js",
     "fetch-launches:full": "node scripts/fetchLaunches.js --full-refetch",
+    "generate-html": "node scripts/generateHtml.js",
+    "build": "npm run generate-html",
     "screenshot": "node scripts/screenshot.js",
     "generate-og": "node scripts/generateOgImage.js",
     "generate-favicons": "node scripts/generateFavicons.js",
     "install-hooks": "[ -d .git/hooks ] && cp scripts/hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push && echo 'Git hooks installed.' || echo 'Skipping git hooks (no .git/hooks directory).'",
     "prepare": "npm run install-hooks",
-    "dev": "npx serve site",
-    "test": "node --test scripts/fetchLaunches.test.js"
+    "dev": "npm run build && npx serve site",
+    "test": "node --test scripts/fetchLaunches.test.js scripts/generateHtml.test.js"
   },
   "devDependencies": {
     "playwright": "^1.49.0"
