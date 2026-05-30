@@ -878,6 +878,7 @@
 
       const nav_keys = new Set(['h', 'H', 'j', 'J', 'k', 'K', 'l', 'L', 'PageDown', 'PageUp']);
       if (!nav_keys.has(event.key)) return;
+      if (event.ctrlKey || event.altKey || event.metaKey) return;
 
       const active = document.activeElement;
       const no_day_focused = !active || !active.classList.contains('day-cell') || !('month' in active.dataset);
