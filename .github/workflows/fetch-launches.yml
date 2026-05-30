@@ -1,0 +1,40 @@
+name: Fetch Launches
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Every Monday at 06:00 UTC
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write # Push the PR branch
+      pull-requests: write # Open the PR
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        # --ignore-scripts prevents the prepare hook from installing git hooks in CI
+        run: npm ci --ignore-scripts
+
+      - name: Fetch launch data
+        run: npm run fetch-launches
+
+      - name: Open PR with updated data
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7.0.9
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '[data] Weekly launch data update'
+          branch: data/weekly-launch-update
+          delete-branch: true
+          title: '[data] Weekly launch data update'
+          body: 'Automated weekly update of `data/launches.json` and `og-image.svg` via the Launch Library 2 API.'
+          labels: data
