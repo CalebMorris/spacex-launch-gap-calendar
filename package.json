@@ -12,7 +12,7 @@
     "install-hooks": "[ -d .git/hooks ] && cp scripts/hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push && echo 'Git hooks installed.' || echo 'Skipping git hooks (no .git/hooks directory).'",
     "prepare": "npm run install-hooks",
     "dev": "npx serve .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test scripts/fetchLaunches.test.js"
   },
   "devDependencies": {
     "playwright": "^1.49.0"

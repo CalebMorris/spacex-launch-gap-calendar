@@ -1,3 +1,4 @@
+import { fileURLToPath } from "url";
 import { mkdir, writeFile, readFile } from "fs/promises";
 import { generate as generateOgImage } from "./generateOgImage.js";
 
@@ -5,7 +6,7 @@ const BASE_URL = "https://ll.thespacedevs.com/2.3.0/launches/";
 const PAGE_SIZE = 100;
 const OUTPUT_FILE = "data/launches.json";
 
-function shapeLaunch(launch) {
+export function shapeLaunch(launch) {
   return {
     name: launch.name,
     date: launch.net,
@@ -14,7 +15,19 @@ function shapeLaunch(launch) {
   };
 }
 
-async function fetchPage(offset, afterDate, beforeDate) {
+export function buildDayMap(newLaunches, existingByDay = {}) {
+  const dayMap = { meta: {}, byDay: structuredClone(existingByDay) };
+  for (const launch of newLaunches) {
+    const date = new Date(launch.date);
+    const key = `${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
+    if (!dayMap.byDay[key]) dayMap.byDay[key] = [];
+    dayMap.byDay[key].push(launch);
+  }
+  dayMap.meta.mostRecentLaunchDate = newLaunches.map((launch) => launch.date).sort().at(-1);
+  return dayMap;
+}
+
+export async function fetchPage(offset, afterDate, beforeDate, fetchFn = fetch) {
   const url = new URL(BASE_URL);
   url.searchParams.set("search", "SpaceX");
   url.searchParams.set("limit", PAGE_SIZE);
@@ -27,16 +40,16 @@ async function fetchPage(offset, afterDate, beforeDate) {
     url.searchParams.set("net__lte", beforeDate);
   }
 
-  const response = await fetch(url);
+  const response = await fetchFn(url);
   if (!response.ok) {
     throw new Error(`HTTP ${response.status} fetching offset ${offset}`);
   }
   return response.json();
 }
 
-async function loadExistingLaunches() {
+export async function loadExistingLaunches(filePath = OUTPUT_FILE) {
   try {
-    return JSON.parse(await readFile(OUTPUT_FILE, "utf-8"));
+    return JSON.parse(await readFile(filePath, "utf-8"));
   } catch {
     return null;
   }
@@ -86,23 +99,18 @@ async function main() {
   }
 
   const existingByDay = fullRefetch ? {} : (loaded?.byDay ?? {});
-  const dayMap = { meta: {}, byDay: existingByDay };
-  for (const launch of newLaunches) {
-    const date = new Date(launch.date);
-    const key = `${String(date.getUTCMonth() + 1).padStart(2, '0')}-${String(date.getUTCDate()).padStart(2, '0')}`;
-    if (!dayMap.byDay[key]) dayMap.byDay[key] = [];
-    dayMap.byDay[key].push(launch);
-  }
-  dayMap.meta.mostRecentLaunchDate = newLaunches.map((launch) => launch.date).sort().at(-1);
+  const dayMap = buildDayMap(newLaunches, existingByDay);
   await writeFile(OUTPUT_FILE, JSON.stringify(dayMap, null, 2));
-  const total_count = Object.values(dayMap.byDay).reduce(
+  const totalCount = Object.values(dayMap.byDay).reduce(
     (sum, value) => sum + value.length, 0
   );
-  console.log(`Saved ${total_count} total launches (${newLaunches.length} new) to ${OUTPUT_FILE}`);
+  console.log(`Saved ${totalCount} total launches (${newLaunches.length} new) to ${OUTPUT_FILE}`);
   generateOgImage();
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
