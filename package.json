@@ -8,6 +8,7 @@
     "fetch-launches:full": "node scripts/fetchLaunches.js --full-refetch",
     "screenshot": "node scripts/screenshot.js",
     "generate-og": "node scripts/generateOgImage.js",
+    "generate-favicons": "node scripts/generateFavicons.js",
     "install-hooks": "cp scripts/hooks/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push && echo 'Git hooks installed.'",
     "prepare": "npm run install-hooks",
     "dev": "npx serve .",

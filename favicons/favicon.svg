@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Deep space background -->
+  <rect width="32" height="32" rx="5" fill="#002b36"/>
+
+  <!-- Rocket body with smooth bezier nosecone (fairing shape) -->
+  <path d="M16,3 C16,3 19.5,8 19.5,11 L19.5,21 L12.5,21 L12.5,11 C12.5,8 16,3 16,3 Z"
+        fill="#dde8ea"/>
+
+  <!-- Swept landing fins (amber — matches site accent) -->
+  <path d="M12.5,17 L9,24.5 L12.5,21.5 Z" fill="#c8900a"/>
+  <path d="M19.5,17 L23,24.5 L19.5,21.5 Z" fill="#c8900a"/>
+
+  <!-- Engine nozzle bell -->
+  <rect x="13" y="21" width="6" height="2.5" rx="0.8" fill="#5a8090"/>
+
+  <!-- Porthole window -->
+  <circle cx="16" cy="14" r="2" fill="#002b36" stroke="#c8900a" stroke-width="0.8"/>
+
+  <!-- Exhaust flame — four nested paths, dark outer to white-hot core -->
+  <path d="M13,23.5 Q13,29.5 16,31 Q19,29.5 19,23.5 Z" fill="#b87010"/>
+  <path d="M13.8,23.5 Q14,28 16,30 Q18,28 18.2,23.5 Z" fill="#e8a020"/>
+  <path d="M14.8,23.5 Q15.2,27 16,28.5 Q16.8,27 17.2,23.5 Z" fill="#ffd440"/>
+  <path d="M15.4,23.5 Q15.7,25.8 16,26.8 Q16.3,25.8 16.6,23.5 Z"
+        fill="white" opacity="0.9"/>
+</svg>

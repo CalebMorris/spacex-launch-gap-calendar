@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpaceX Launch Calendar — Every Mission, Every Day</title>
 
+  <!-- ── Favicon ───────────────────────────────────────────────────────────
+       SVG is the primary format (scalable, all modern browsers).
+       PNG fallback covers older browsers and specialised crawlers.
+       apple-touch-icon is required for iOS "Add to Home Screen".
+       Regenerate PNGs with: node scripts/generateFavicons.js
+  ──────────────────────────────────────────────────────────────────────── -->
+  <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+
   <!-- ── Social / Discord preview ─────────────────────────────────────────
        og:image MUST be an absolute URL.
        Regenerate og-image.svg with: npm run generate-og
@@ -137,10 +147,19 @@
     }
 
     .stats-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+      display: grid;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .stats-row--3 {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 560px;
+    }
+
+    .stats-row--2 {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 360px;
     }
 
     .stats-group-label {
@@ -149,6 +168,7 @@
       gap: 16px;
       margin: 14px auto;
       max-width: 520px;
+      width: 100%;
       font-size: 10px;
       letter-spacing: 0.45em;
       text-transform: uppercase;
@@ -165,7 +185,7 @@
     }
 
     .stat-item {
-      padding: 0 28px;
+      padding: 8px 0;
       text-align: center;
       border-right: 1px solid var(--border);
     }
@@ -174,18 +194,19 @@
 
     .stat-number {
       font-family: 'Orbitron', sans-serif;
-      font-size: 26px;
+      font-size: clamp(18px, 4vw, 26px);
       font-weight: 700;
       color: var(--accent-bright);
       letter-spacing: 0.05em;
     }
 
     .stat-label {
-      font-size: 11px;
-      letter-spacing: 0.3em;
+      font-size: clamp(9px, 2vw, 11px);
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-secondary);
       margin-top: 5px;
+      padding: 0 8px;
     }
 
     /* ── CALENDAR GRID ── */
@@ -490,7 +511,7 @@
       <p class="alltime-badge">All-Time Aggregated Heatmap</p>
 
       <div class="stats-block">
-        <div class="stats-row" role="group" aria-label="Launch statistics">
+        <div class="stats-row stats-row--3" role="group" aria-label="Launch statistics">
           <div class="stat-item">
             <div class="stat-number" id="stat-total">–</div>
             <div class="stat-label">Total Launches</div>
@@ -505,7 +526,7 @@
           </div>
         </div>
         <div class="stats-group-label" aria-hidden="true">Gap Analysis</div>
-        <div class="stats-row" role="group" aria-label="Gap statistics">
+        <div class="stats-row stats-row--2" role="group" aria-label="Gap statistics">
           <div class="stat-item">
             <div class="stat-number" id="stat-gap-days">–</div>
             <div class="stat-label">Gap Days</div>
