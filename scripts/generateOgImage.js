@@ -127,7 +127,7 @@ export function generate() {
     readFileSync(resolve(__dirname, '../data/launches.json'), 'utf-8')
   );
 
-  const { mostRecentLaunchDate, ...dayMap } = data;
+  const { byDay: dayMap } = data;
 
   let totalLaunches = 0;
   let uniqueDays    = 0;
@@ -135,7 +135,7 @@ export function generate() {
   const dayCounts = {};
 
   for (const [key, launches] of Object.entries(dayMap)) {
-    if (!Array.isArray(launches) || launches.length === 0) continue;
+    if (launches.length === 0) continue;
     totalLaunches += launches.length;
     uniqueDays++;
     dayCounts[key] = launches.length;
