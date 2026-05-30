@@ -7,6 +7,7 @@
     "fetch-launches": "node scripts/fetchLaunches.js",
     "fetch-launches:full": "node scripts/fetchLaunches.js --full-refetch",
     "screenshot": "node scripts/screenshot.js",
+    "generate-og": "node scripts/generateOgImage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

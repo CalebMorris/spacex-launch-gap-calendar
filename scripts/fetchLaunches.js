@@ -1,4 +1,5 @@
 import { mkdir, writeFile, readFile } from "fs/promises";
+import { generate as generateOgImage } from "./generateOgImage.js";
 
 const BASE_URL = "https://ll.thespacedevs.com/2.3.0/launches/";
 const PAGE_SIZE = 100;
@@ -97,6 +98,7 @@ async function main() {
     (sum, value) => (Array.isArray(value) ? sum + value.length : sum), 0
   );
   console.log(`Saved ${total_count} total launches (${newLaunches.length} new) to ${OUTPUT_FILE}`);
+  generateOgImage();
 }
 
 main().catch((error) => {
