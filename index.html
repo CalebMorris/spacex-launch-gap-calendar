@@ -22,8 +22,11 @@
       --accent-bright:   #e0bb40;
 
       /* Heatmap: amber/gold — warm complement to the cool teal base */
-      --l0-bg:     #073642;
-      --l0-text:   #93a1a1;
+      --gap-accent: #2aa198;  /* Solarized cyan */
+
+      --l0-bg:     #0a3d44;
+      --l0-border: rgba(42, 161, 152, 0.28);
+      --l0-text:   #4d8e97;
 
       --l1-bg:     #291d08;
       --l1-border: #5e4010;
@@ -111,12 +114,36 @@
     }
 
     /* ── STATS ── */
+    .stats-block {
+      margin-bottom: 48px;
+    }
+
     .stats-row {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 48px;
       flex-wrap: wrap;
+    }
+
+    .stats-group-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 14px auto;
+      max-width: 520px;
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gap-accent);
+      opacity: 0.6;
+    }
+
+    .stats-group-label::before,
+    .stats-group-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--l0-border);
     }
 
     .stat-item {
@@ -249,7 +276,7 @@
       user-select: none;
     }
 
-    .day-cell.l0 { background: var(--l0-bg); }
+    .day-cell.l0 { background: var(--l0-bg); box-shadow: inset 0 0 0 1px var(--l0-border); }
     .day-cell.l0 .day-num { color: var(--l0-text); }
 
     .day-cell.has-launch { cursor: pointer; }
@@ -321,7 +348,7 @@
       color: var(--text-secondary);
     }
 
-    .swatch-0 { background: var(--l0-bg);    border-color: var(--l0-text); }
+    .swatch-0 { background: var(--l0-bg);    border-color: var(--gap-accent); }
     .swatch-1 { background: var(--l1-bg);    border-color: var(--l1-border); }
     .swatch-2 { background: var(--l2-bg);    border-color: var(--l2-border); }
     .swatch-3 { background: var(--l3-bg);    border-color: var(--l3-border); }
@@ -444,18 +471,31 @@
 
       <p class="alltime-badge">All-Time Aggregated Heatmap</p>
 
-      <div class="stats-row" role="group" aria-label="Launch statistics">
-        <div class="stat-item">
-          <div class="stat-number" id="stat-total">–</div>
-          <div class="stat-label">Total Launches</div>
+      <div class="stats-block">
+        <div class="stats-row" role="group" aria-label="Launch statistics">
+          <div class="stat-item">
+            <div class="stat-number" id="stat-total">–</div>
+            <div class="stat-label">Total Launches</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="stat-days">–</div>
+            <div class="stat-label">Unique Launch Days</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="stat-busiest">–</div>
+            <div class="stat-label">Busiest Month</div>
+          </div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number" id="stat-days">–</div>
-          <div class="stat-label">Unique Launch Days</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" id="stat-busiest">–</div>
-          <div class="stat-label">Busiest Month</div>
+        <div class="stats-group-label" aria-hidden="true">Gap Analysis</div>
+        <div class="stats-row" role="group" aria-label="Gap statistics">
+          <div class="stat-item">
+            <div class="stat-number" id="stat-gap-days">–</div>
+            <div class="stat-label">Gap Days</div>
+          </div>
+          <div class="stat-item stat-item--last">
+            <div class="stat-number" id="stat-quietest">–</div>
+            <div class="stat-label">Quietest Month</div>
+          </div>
         </div>
       </div>
     </header>
@@ -470,7 +510,7 @@
       <span class="legend-label">Launches per day:</span>
       <div class="legend-item">
         <div class="legend-swatch swatch-0"></div>
-        <span class="legend-item-label">None</span>
+        <span class="legend-item-label">Gap day</span>
       </div>
       <div class="legend-item">
         <div class="legend-swatch swatch-1"></div>
@@ -532,6 +572,7 @@
       let total = 0;
       let launch_days = 0;
       const month_counts = new Array(12).fill(0);
+      const month_launch_days = new Array(12).fill(0);
 
       for (const [key, missions] of Object.entries(launches_by_day)) {
         if (!Array.isArray(missions)) continue;
@@ -539,14 +580,25 @@
         launch_days++;
         const month_idx = parseInt(key.slice(0, 2), 10) - 1;
         month_counts[month_idx] += missions.length;
+        month_launch_days[month_idx]++;
       }
 
       const busiest_idx = month_counts.indexOf(Math.max(...month_counts));
       const busiest_label = total > 0 ? MONTH_NAMES[busiest_idx].slice(0, 3).toUpperCase() : '–';
 
+      let total_days_in_year = 0;
+      for (let m = 0; m < 12; m++) total_days_in_year += days_in_month(CALENDAR_YEAR, m);
+      const gap_days = total_days_in_year - launch_days;
+
+      const month_gap_counts = month_launch_days.map((ld, m) => days_in_month(CALENDAR_YEAR, m) - ld);
+      const quietest_idx = month_gap_counts.indexOf(Math.max(...month_gap_counts));
+      const quietest_label = total > 0 ? MONTH_NAMES[quietest_idx].slice(0, 3).toUpperCase() : '–';
+
       document.getElementById('stat-total').textContent = total.toLocaleString();
       document.getElementById('stat-days').textContent = launch_days;
       document.getElementById('stat-busiest').textContent = busiest_label;
+      document.getElementById('stat-gap-days').textContent = gap_days;
+      document.getElementById('stat-quietest').textContent = quietest_label;
 
       const grid = document.createElement('div');
       grid.className = 'calendar-grid';
