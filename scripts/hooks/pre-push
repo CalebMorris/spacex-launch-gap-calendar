@@ -1,0 +1,23 @@
+#!/bin/sh
+# Regenerates screenshots and OG image before every push.
+# Blocks the push if the generated files are not committed.
+
+set -e
+
+echo "pre-push: generating OG image..."
+npm run generate-og
+
+echo "pre-push: generating screenshots..."
+npm run screenshot
+
+dirty=$(git status --porcelain -- og-image.svg screenshots/)
+if [ -n "$dirty" ]; then
+  echo ""
+  echo "pre-push: generated files have uncommitted changes — please commit them before pushing:"
+  echo "$dirty" | sed 's/^/  /'
+  echo ""
+  exit 1
+fi
+
+echo "pre-push: all generated assets are committed. Proceeding with push."
+exit 0
