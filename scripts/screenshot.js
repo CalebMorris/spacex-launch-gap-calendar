@@ -7,7 +7,8 @@ const PORT = 8787;
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUTPUT_DIR = path.resolve(ROOT, 'screenshots');
 const DATE = new Date().toISOString().slice(0, 10);
-const OUTPUT = path.resolve(OUTPUT_DIR, `screenshot-${DATE}.png`);
+const OUTPUT_DESKTOP = path.resolve(OUTPUT_DIR, `screenshot-${DATE}.png`);
+const OUTPUT_MOBILE = path.resolve(OUTPUT_DIR, `screenshot-${DATE}-mobile.png`);
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -48,11 +49,16 @@ console.log(`Server running at http://localhost:${PORT}`);
 
 const browser = await chromium.launch();
 const page = await browser.newPage();
-await page.setViewportSize({ width: 1280, height: 900 });
 
+await page.setViewportSize({ width: 1280, height: 900 });
 await page.goto(`http://localhost:${PORT}`, { waitUntil: 'networkidle' });
-await page.screenshot({ path: OUTPUT, fullPage: true });
-console.log(`Screenshot saved to ${OUTPUT}`);
+await page.screenshot({ path: OUTPUT_DESKTOP, fullPage: true });
+console.log(`Desktop screenshot saved to ${OUTPUT_DESKTOP}`);
+
+await page.setViewportSize({ width: 390, height: 844 });
+await page.reload({ waitUntil: 'networkidle' });
+await page.screenshot({ path: OUTPUT_MOBILE, fullPage: true });
+console.log(`Mobile screenshot saved to ${OUTPUT_MOBILE}`);
 
 await browser.close();
 server.close();
