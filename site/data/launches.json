@@ -1,6 +1,6 @@
 {
   "meta": {
-    "mostRecentLaunchDate": "2026-05-30T15:25:10Z"
+    "mostRecentLaunchDate": "2026-06-03T15:40:39Z"
   },
   "byDay": {
     "01-03": [
@@ -2181,6 +2181,12 @@
         "date": "2025-06-03T04:43:40Z",
         "status": "Success",
         "mission": "Starlink Group 12-19"
+      },
+      {
+        "name": "Falcon 9 Block 5 | Starlink Group 17-47",
+        "date": "2026-06-03T15:40:39Z",
+        "status": "Success",
+        "mission": "Starlink Group 17-47"
       }
     ],
     "06-04": [
