@@ -20,14 +20,14 @@
 
   <text x="310" y="152" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="30" font-weight="700"
-    fill="#e0bb40">689</text>
+    fill="#e0bb40">693</text>
   <text x="310" y="168" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="9" letter-spacing="2"
     fill="#7a9aaa">TOTAL LAUNCHES</text>
 
   <text x="600" y="152" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="30" font-weight="700"
-    fill="#e0bb40">317</text>
+    fill="#e0bb40">318</text>
   <text x="600" y="168" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="9" letter-spacing="2"
     fill="#7a9aaa">UNIQUE LAUNCH DAYS</text>
@@ -271,9 +271,9 @@
 <rect x="405" y="402" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
 <rect x="442" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="479" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
-<rect x="516" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="516" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="553" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="331" y="418" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
+<rect x="331" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="368" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="405" y="418" width="34" height="14" fill="#452c08" stroke="#b07018" stroke-width="1" rx="1"/>
 <rect x="442" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
