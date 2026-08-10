@@ -20,14 +20,14 @@
 
   <text x="310" y="152" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="30" font-weight="700"
-    fill="#e0bb40">699</text>
+    fill="#e0bb40">714</text>
   <text x="310" y="168" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="9" letter-spacing="2"
     fill="#7a9aaa">TOTAL LAUNCHES</text>
 
   <text x="600" y="152" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="30" font-weight="700"
-    fill="#e0bb40">318</text>
+    fill="#e0bb40">320</text>
   <text x="600" y="168" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="9" letter-spacing="2"
     fill="#7a9aaa">UNIQUE LAUNCH DAYS</text>
@@ -299,25 +299,25 @@
 <rect x="827" y="370" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
 <rect x="605" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="642" y="386" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
-<rect x="679" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="679" y="386" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="716" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="753" y="386" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
+<rect x="753" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="790" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="827" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="605" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="642" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="679" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="679" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="716" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="753" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="790" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="827" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="605" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="642" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="679" y="418" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
+<rect x="679" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="716" y="418" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="753" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="790" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="827" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="790" y="418" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
+<rect x="827" y="418" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="605" y="434" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="642" y="434" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="679" y="434" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
