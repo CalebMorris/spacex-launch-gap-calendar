@@ -20,7 +20,7 @@
 
   <text x="310" y="152" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="30" font-weight="700"
-    fill="#e0bb40">714</text>
+    fill="#e0bb40">718</text>
   <text x="310" y="168" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="9" letter-spacing="2"
     fill="#7a9aaa">TOTAL LAUNCHES</text>
@@ -344,12 +344,12 @@
 <rect x="1101" y="386" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="879" y="402" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
 <rect x="916" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="953" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="953" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="990" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="1027" y="402" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
 <rect x="1064" y="402" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="1101" y="402" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="879" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="879" y="418" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="916" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="953" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="990" y="418" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
