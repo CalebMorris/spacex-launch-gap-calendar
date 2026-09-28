@@ -20,7 +20,7 @@
 
   <text x="310" y="152" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="30" font-weight="700"
-    fill="#e0bb40">728</text>
+    fill="#e0bb40">731</text>
   <text x="310" y="168" text-anchor="middle"
     font-family="'Courier New',monospace" font-size="9" letter-spacing="2"
     fill="#7a9aaa">TOTAL LAUNCHES</text>
@@ -394,7 +394,7 @@
 <rect x="205" y="544" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="242" y="544" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="279" y="544" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
-<rect x="57" y="560" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
+<rect x="57" y="560" width="34" height="14" fill="#372508" stroke="#7e5818" stroke-width="1" rx="1"/>
 <rect x="94" y="560" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="131" y="560" width="34" height="14" fill="#291d08" stroke="#5e4010" stroke-width="1" rx="1"/>
 <rect x="168" y="560" width="34" height="14" fill="#073642" stroke="#0e4255" stroke-width="0" rx="1"/>
